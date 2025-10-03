@@ -2,3 +2,5 @@ streamlit
 joblib
 pandas
 numpy
+
+catboost
