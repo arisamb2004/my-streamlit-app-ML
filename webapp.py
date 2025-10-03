@@ -43,13 +43,19 @@ st.title(_T("title"))
 # ====================================================================
 # --- 1. Load Model, Scaler, Dataset ---
 # ====================================================================
-MODEL_PATH = "D:/ML project/catboost_model.cbm"
-SCALER_PATH = "D:/ML project/scaler.pkl"
-DATA_PATH = "D:/ML project/handlingEncoder.csv"
+# *** แก้ไข: ใช้ Relative Path แทน Absolute Path ***
+MODEL_PATH = "catboost_model.cbm"  # ต้องมีไฟล์นี้ใน GitHub
+SCALER_PATH = "scaler.pkl"        # ต้องมีไฟล์นี้ใน GitHub
+DATA_PATH = "handlingEncoder.csv" # ต้องมีไฟล์นี้ใน GitHub
+# *************************************************
 
 try:
     model = CatBoostRegressor()
-    model.load_model(MODEL_PATH)
+    # model.load_model(MODEL_PATH)
+    # เนื่องจาก CatBoostRegressor() ถูกสร้างแล้ว
+    # การโหลด model ควรใช้คำสั่งนี้
+    model.load_model(MODEL_PATH) 
+    
     scaler = joblib.load(SCALER_PATH)
     df_actual = pd.read_csv(DATA_PATH)
 except Exception as e:
